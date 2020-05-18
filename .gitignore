@@ -1,0 +1,13 @@
+# Intellij Idea specific files
+*.iml
+.idea/*
+
+#Eclipse specific
+.settings
+.project
+.classpath
+.checkstyle
+
+# Rest of folders and files
+bin
+target
