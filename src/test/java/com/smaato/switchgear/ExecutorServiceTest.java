@@ -89,7 +89,7 @@ public class ExecutorServiceTest {
     public void whenCircuitBreakerThrowExceptionThenReturnFailingFuture() {
         final CircuitBreaker circuitBreakerMock = mock(CircuitBreaker.class);
         when(circuitBreakerMock.execute(any(), any(), eq(TIMEOUT_IN_MILLIS))).thenThrow(new RuntimeException());
-        when(circuitBreakerHolderMock.getFor("")).thenReturn(circuitBreakerMock);
+        when(circuitBreakerHolderMock.getFor(GROUP_NAME)).thenReturn(circuitBreakerMock);
 
         final Future<Object> actualFuture = executorService.execute(Action.builder(SUCCESSFUL_EXECUTION)
                                                                           .withCircuitBreakerFallback(fallbackMock)
