@@ -9,6 +9,7 @@
     <packaging>jar</packaging>
 
     <name>Switchgear</name>
+    <url>https://github.com/smaato/switchgear</url>
     <description>
         Switchgear is a Java library that provides an API for call isolation, timeouts, and circuit breaker
         functionality. Our main goal is to achieve minimal performance overhead of the library, even when used in the
@@ -16,14 +17,20 @@
         fluent API.
     </description>
 
-    <url>https://github.com/smaato/switchgear</url>
-    <scm>
-        <url>https://github.com/smaato/switchgear.git</url>
-    </scm>
     <organization>
         <name>Smaato Inc.</name>
         <url>http://www.smaato.com</url>
     </organization>
+
+    <developers>
+        <developer>
+            <name>Mintaka</name>
+            <email>mintaka@smaato.com</email>
+            <organization>Smaato Inc.</organization>
+            <organizationUrl>http://www.smaato.com</organizationUrl>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>MIT</name>
@@ -33,6 +40,10 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <url>https://github.com/smaato/switchgear.git</url>
+    </scm>
 
     <distributionManagement>
         <repository>
@@ -53,6 +64,8 @@
         <jmh-generator-annprocess.version>1.23</jmh-generator-annprocess.version>
         <jmh-core.version>1.23</jmh-core.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>2.9.1</maven.javadoc.plugin.version>
+        <maven.gpg.plugin>1.5</maven.gpg.plugin>
     </properties>
 
     <dependencies>
@@ -120,6 +133,33 @@
                         <id>attach-sources</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven.gpg.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
