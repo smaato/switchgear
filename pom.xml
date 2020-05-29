@@ -42,7 +42,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/smaato/switchgear.git</url>
+        <url>https://github.com/smaato/switchgear</url>
+        <connection>scm:git:git@github.com:smaato/switchgear.git</connection>
     </scm>
 
     <distributionManagement>
@@ -65,7 +66,7 @@
         <jmh-core.version>1.23</jmh-core.version>
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.javadoc.plugin.version>2.9.1</maven.javadoc.plugin.version>
-        <maven.gpg.plugin>1.5</maven.gpg.plugin>
+        <maven.gpg.plugin>1.6</maven.gpg.plugin>
     </properties>
 
     <dependencies>
@@ -150,21 +151,35 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>${maven.gpg.plugin}</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>ci</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven.gpg.plugin}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${env.GPG_KEYNAME}</keyname>
+                                    <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

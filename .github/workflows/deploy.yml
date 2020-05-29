@@ -11,6 +11,8 @@ jobs:
         with:
           java-version: 1.8
       - name: Publish package
-        run: mvn -B deploy
+        run: mvn -B -P ci deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
