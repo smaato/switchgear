@@ -157,6 +157,11 @@
     <profiles>
         <profile>
             <id>sign</id>
+            <properties>
+                <gpg.executable>gpg</gpg.executable>
+                <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+                <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -171,8 +176,10 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <keyname>${env.GPG_KEYNAME}</keyname>
-                                    <passphraseServerId>${env.GPG_PASSPHRASE}</passphraseServerId>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
                                 </configuration>
                             </execution>
                         </executions>
