@@ -41,10 +41,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/smaato/switchgear</url>
-        <connection>scm:git:git@github.com:smaato/switchgear.git</connection>
-      <tag>v0.1.0</tag>
-  </scm>
+        <developerConnection>scm:git:https://github.com/${project.groupId}/${project.artifactId}</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <distributionManagement>
         <repository>
@@ -72,7 +71,7 @@
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.javadoc.plugin.version>2.9.1</maven.javadoc.plugin.version>
         <maven.gpg.plugin>1.6</maven.gpg.plugin>
-        <maven.release.plugin>3.0.0-M1</maven.release.plugin>
+        <maven.release.plugin>2.5.3</maven.release.plugin>
     </properties>
 
     <dependencies>
@@ -173,8 +172,8 @@
             <id>sign</id>
             <properties>
                 <gpg.executable>gpg</gpg.executable>
-                <gpg.passphrase>development.soma.switchgear@745</gpg.passphrase>
-                <gpg.keyname>DB91ADDBF5C4C74C4729F0181F55E8141CDC394D</gpg.keyname>
+                <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+                <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
             </properties>
             <build>
                 <plugins>
