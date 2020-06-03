@@ -37,13 +37,8 @@ jobs:
       env:
         MAVEN_SETTINGS: ${{ secrets.MAVEN_SETTINGS }}
 
-    - name: Setup Git Config
-      run: |
-        git config --global user.email "opensource@smaato.com"
-        git config --global user.name "development"
-
-    - name: Release
-      run: mvn -P sign release:prepare release:perform -B
+    - name: Deploy
+      run: mvn -B -P sign deploy -DskipTests
       env:
         GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
