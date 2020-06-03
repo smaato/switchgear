@@ -41,7 +41,7 @@
     </licenses>
 
     <scm>
-        <developerConnection>scm:git:https://github.com/${project.groupId}/${project.artifactId}</developerConnection>
+        <developerConnection>scm:git:https://github.com/smaato/switchgear</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
