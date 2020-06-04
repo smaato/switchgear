@@ -42,6 +42,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/smaato/switchgear</developerConnection>
+        <connection>scm:git:git://github.com/smaato/switchgear.git</connection>
         <tag>HEAD</tag>
     </scm>
 
