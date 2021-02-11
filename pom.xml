@@ -4,7 +4,7 @@
 
     <groupId>com.smaato.switchgear</groupId>
     <artifactId>switchgear</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>Switchgear</name>
@@ -44,7 +44,7 @@
         <developerConnection>scm:git:https://github.com/smaato/switchgear</developerConnection>
         <connection>scm:git:git://github.com/smaato/switchgear.git</connection>
         <url>https://github.com/smaato/switchgear.git</url>
-        <tag>HEAD</tag>
+        <tag>v0.1.1</tag>
     </scm>
 
     <distributionManagement>
